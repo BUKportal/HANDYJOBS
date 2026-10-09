@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10243e"><meta name="description" content="JIMKI connects customers with trusted local professionals.">
+<title>JIMKI — Find a pro. Get it done.</title><link rel="manifest" href="manifest.json"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+:root{
+ --navy:#10253f;--navy2:#183d5f;--ink:#172235;--muted:#6c7889;--line:#e7ecf2;
+ --bg:#f5f7fb;--card:#fff;--green:#16a875;--green2:#e8faf3;--gold:#f5b83d;
+ --shadow:0 18px 55px rgba(16,37,63,.09);--soft:0 8px 26px rgba(16,37,63,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:
+ radial-gradient(circle at 7% 8%,rgba(22,168,117,.075),transparent 22rem),
+ radial-gradient(circle at 92% 4%,rgba(245,184,61,.08),transparent 20rem),var(--bg);
+ color:var(--ink);font-family:"DM Sans",system-ui,sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.84);backdrop-filter:blur(18px);border-bottom:1px solid rgba(231,236,242,.8)}
+.topin{max-width:1240px;margin:auto;height:76px;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:11px;align-items:center;font-family:Manrope,sans-serif;font-size:22px;font-weight:800;letter-spacing:-.045em;color:var(--navy)}
+.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(145deg,#173d60,#16a875);color:#fff;display:grid;place-items:center;font-weight:800;box-shadow:0 9px 22px rgba(16,37,63,.18);position:relative}
+.logo:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:#ffd36b;right:6px;top:6px}
+.actions{display:flex;gap:10px}
+.main{max-width:1240px;margin:auto;padding:30px 24px 105px}
+.hero{position:relative;overflow:hidden;min-height:420px;background:linear-gradient(128deg,#0d223b 0%,#173e61 58%,#126b57 120%);color:#fff;border-radius:32px;padding:48px;display:grid;grid-template-columns:1.25fr .75fr;gap:30px;box-shadow:0 28px 70px rgba(16,37,63,.2)}
+.hero:before{content:"";position:absolute;width:470px;height:470px;border-radius:50%;right:-150px;top:-250px;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 0 42px rgba(255,255,255,.025),0 0 0 84px rgba(255,255,255,.018)}
+.hero:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;left:-110px;bottom:-150px;background:rgba(22,168,117,.16)}
+.hero>*{position:relative;z-index:2}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;color:#c8eee2;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.hero-kicker i{width:8px;height:8px;background:#ffd36b;border-radius:50%;display:block}
+.hero h1{font-family:Manrope,sans-serif;font-size:clamp(40px,5vw,68px);line-height:1.01;letter-spacing:-.06em;margin:17px 0 17px;max-width:720px}
+.hero p{color:#d8e6f0;line-height:1.7;max-width:650px;font-size:16px;margin:0}
+.search{display:flex;background:#fff;border-radius:17px;padding:6px;margin-top:28px;max-width:670px;box-shadow:0 18px 35px rgba(0,0,0,.18)}
+.search input{flex:1;border:0!important;outline:0;padding:13px 14px;background:transparent!important;min-width:0}
+.primary{background:linear-gradient(135deg,#16a875,#0e9367);color:#fff;border-radius:12px;padding:12px 18px;font-weight:800;box-shadow:0 9px 20px rgba(22,168,117,.2);transition:.18s}
+.primary:hover{transform:translateY(-2px);box-shadow:0 13px 28px rgba(22,168,117,.28)}
+.secondary{background:#eef2f6;color:var(--navy);border-radius:12px;padding:11px 15px;font-weight:750;transition:.18s}
+.secondary:hover{background:#e5ebf0}
+.hero-card{align-self:end;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:23px;backdrop-filter:blur(12px);box-shadow:inset 0 1px rgba(255,255,255,.1)}
+.hero-card .mini-title{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#b9d7df;font-weight:800}
+.hero-card .big{font-family:Manrope,sans-serif;font-size:26px;font-weight:800;line-height:1.15;margin:9px 0 13px}
+.hero-card p{font-size:13px;line-height:1.65;color:#d7e4ec}
+.hero-points{display:grid;gap:9px;margin-top:16px}
+.hero-point{display:flex;align-items:center;gap:9px;font-size:13px;color:#eef7f4}
+.hero-point span{width:24px;height:24px;border-radius:8px;background:rgba(22,168,117,.28);display:grid;place-items:center}
+.section{margin-top:38px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:17px}
+.head h2{font-family:Manrope,sans-serif;letter-spacing:-.035em;margin:0;font-size:25px}
+.head p{margin:6px 0 0}
+.muted{color:var(--muted)}
+.services,.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.services{grid-template-columns:repeat(6,1fr)}
+.service,.card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:20px;padding:20px}
+.service{text-align:left;min-height:135px;box-shadow:var(--soft);transition:.2s}
+.service:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(22,168,117,.3)}
+.ico{width:47px;height:47px;border-radius:15px;background:linear-gradient(145deg,#effaf6,#f8fbfa);display:grid;place-items:center;font-size:24px;margin-bottom:15px}
+.service strong{display:block;font-size:14px;margin-bottom:4px}
+.service small{font-size:12px;line-height:1.35;display:block}
+.card{box-shadow:var(--soft)}
+.provider{display:flex;gap:13px;align-items:center}
+.avatar{width:55px;height:55px;border-radius:17px;background:linear-gradient(145deg,#e4f7ef,#dbe8f3);color:var(--navy);display:grid;place-items:center;font-weight:850;flex:none}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0}
+.tag{background:#edf8f4;color:#167653;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:750}
+.verified{color:var(--green);font-weight:750}
+.notice{background:var(--green2);color:#17684e;border-radius:14px;padding:14px;margin:14px 0;font-size:13px}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-top:1px solid var(--line);z-index:20}
+.bottomin{max-width:620px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.bottom button{background:transparent;padding:10px 4px 9px;color:#8792a1;font-size:11px;transition:.15s}
+.bottom button span{display:block;font-size:20px;margin-bottom:2px}
+.bottom button.active{color:var(--green);font-weight:800}
+.modal{position:fixed;inset:0;background:rgba(7,18,30,.58);display:none;align-items:flex-end;justify-content:center;z-index:50;backdrop-filter:blur(4px)}
+.modal.open{display:flex}
+.sheet{width:min(700px,100%);max-height:94vh;overflow:auto;background:#fff;border-radius:28px 28px 0 0;padding:28px;box-shadow:0 -20px 70px rgba(0,0,0,.2)}
+.close{float:right;background:#f0f3f6;border-radius:11px;padding:8px 11px}
+.field{margin:15px 0}.field label{font-size:13px;font-weight:800;display:block;margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;padding:13px;border:1px solid #dbe2e9;border-radius:12px;outline:0;background:#fff}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#16a875;box-shadow:0 0 0 4px rgba(22,168,117,.1)}
+.field textarea{min-height:100px}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:9px}.choice button{padding:13px;border:1px solid var(--line);background:#fff;border-radius:12px}.choice button.selected{border:2px solid var(--green);background:var(--green2)}
+.auth{min-height:72vh;display:grid;place-items:center}
+.auth-card{width:min(520px,100%);background:#fff;border:1px solid var(--line);border-radius:26px;padding:30px;box-shadow:var(--shadow)}
+.auth-card h2{font-family:Manrope,sans-serif;letter-spacing:-.04em}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#f0f3f6;padding:4px;border-radius:12px}
+.auth-tabs button{padding:10px;border-radius:9px;background:transparent}.auth-tabs .active{background:#fff;font-weight:800;box-shadow:0 3px 10px rgba(16,37,63,.06)}
+.checkgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{border:1px solid var(--line);padding:10px;border-radius:10px}.check input{width:auto}
+.empty{text-align:center;padding:55px 15px}.error{background:#fff0f0;color:#9c2929;padding:12px;border-radius:10px;font-size:13px}.success{background:var(--green2);color:#17684e;padding:12px;border-radius:10px;font-size:13px}
+@media(max-width:1050px){.services{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.hero-card{max-width:520px}}
+@media(max-width:650px){.main{padding:18px 14px 92px}.topin{padding:0 14px;height:68px}.hero{padding:28px 22px;border-radius:25px;min-height:0}.hero h1{font-size:43px}.hero-card{display:none}.search{margin-top:22px}.services,.grid{grid-template-columns:1fr 1fr}.service{min-height:128px;padding:16px}.actions .secondary{padding:9px 11px;font-size:12px}}
+</style></head>
+<body><header class="top"><div class="topin"><div class="brand"><div class="logo">J</div><span>JIMKI</span></div><div class="actions" id="topActions"></div></div></header><main class="main" id="main"></main><nav class="bottom" id="bottom"></nav><div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+<script>
+const services=[['🔧','Plumbing','Repairs & installation'],['🧹','Cleaning','Home & deep cleaning'],['🌳','Lawn Care','Mowing & landscaping'],['❄️','HVAC','Heating & cooling'],['⚡','Electrical','Repairs & wiring'],['🛠️','Handyman','Everyday home repairs'],['🐜','Pest Control','Treatment & prevention'],['🚚','Junk Removal','Hauling & cleanouts'],['🪟','Window Cleaning','Interior & exterior'],['🔒','Locksmith','Locks & emergencies']];
+let sb=null, user=null, profile=null, view='home';
+const $=id=>document.getElementById(id); const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+function configured(){return window.FIXLY_CONFIG?.supabaseUrl?.startsWith('http')&&window.FIXLY_CONFIG?.supabaseAnonKey&&window.FIXLY_CONFIG.supabaseAnonKey!=='YOUR_SUPABASE_ANON_KEY'}
+async function init(){if(configured()){sb=supabase.createClient(FIXLY_CONFIG.supabaseUrl,FIXLY_CONFIG.supabaseAnonKey);const r=await sb.auth.getSession();user=r.data.session?.user||null;if(user){const p=await sb.from('profiles').select('*').eq('id',user.id).single();profile=p.data||null}sb.auth.onAuthStateChange(async(_e,s)=>{user=s?.user||null;if(user){const p=await sb.from('profiles').select('*').eq('id',user.id).single();profile=p.data||null}else profile=null;render()})}render()}
+function render(){if(!configured())return setupScreen();$('topActions').innerHTML=user?`<button class="secondary" onclick="signOut()">Sign out</button>`:`<button class="secondary" onclick="authScreen()">Log in / Sign up</button>`;if(!user)return authScreen();$('bottom').innerHTML=`<div class="bottomin"><button class="${view==='home'?'active':''}" onclick="go('home')"><span>⌂</span>Home</button><button class="${view==='explore'?'active':''}" onclick="go('explore')"><span>⌕</span>Explore</button><button class="${view==='connections'?'active':''}" onclick="go('connections')"><span>▣</span>Connections</button><button class="${view==='profile'?'active':''}" onclick="go('profile')"><span>●</span>Profile</button></div>`;if(profile?.role==='professional')proDashboard();else customerHome()}
+function setupScreen(){$('topActions').innerHTML='';$('bottom').innerHTML='';$('main').innerHTML=`<section class="auth"><div class="auth-card"><h1 style="font-family:Manrope,sans-serif;letter-spacing:-.045em">JIMKI is almost ready</h1><p class="muted">The production frontend is built. Add your Supabase project URL and anon/publishable key to <b>config.js</b>, then run <b>schema.sql</b> in Supabase SQL Editor.</p><div class="notice">No payment gateway is used. Customers and professionals settle payment directly.</div><button class="primary" style="width:100%" onclick="location.reload()">I added my Supabase keys</button></div></section>`}
+function authScreen(){view='auth';$('bottom').innerHTML='';$('main').innerHTML=`<section class="auth"><div class="auth-card"><div class="auth-tabs"><button id="loginTab" class="active" onclick="authMode('login')">Log in</button><button id="signupTab" onclick="authMode('signup')">Create account</button></div><div id="authForm"></div></div></section>`;authMode('login')}
+function authMode(mode){$('loginTab')?.classList.toggle('active',mode==='login');$('signupTab')?.classList.toggle('active',mode==='signup');$('authForm').innerHTML=mode==='login'?`<h2>Welcome back 👋</h2><div class="field"><label>Email</label><input id="email" type="email" autocomplete="email"></div><div class="field"><label>Password</label><input id="password" type="password" autocomplete="current-password"></div><div id="authMsg"></div><button class="primary" style="width:100%" onclick="login()">Log in</button>`:`<h2>Create your JIMKI account</h2><div class="choice"><button id="custRole" class="selected" onclick="pickRole('customer')">🏠 Customer</button><button id="proRole" onclick="pickRole('professional')">🛠️ Professional</button></div><div class="field"><label>Full name</label><input id="name"></div><div class="field"><label>Email</label><input id="email" type="email"></div><div class="field"><label>Password</label><input id="password" type="password" minlength="6"></div><div class="field"><label>Phone</label><input id="phone" type="tel"></div><div class="field"><label>City</label><input id="city" placeholder="Austin"></div><div class="field"><label>State</label><input id="state" placeholder="TX"></div><div id="proFields" class="hide"><div class="field"><label>Service area</label><input id="area" placeholder="Austin and nearby areas"></div><div class="field"><label>Services you provide</label><div class="checkgrid">${services.slice(0,6).map(s=>`<label class="check"><input type="checkbox" name="service" value="${esc(s[1])}"> ${esc(s[1])}</label>`).join('')}</div></div></div><div id="authMsg"></div><button class="primary" style="width:100%" onclick="signup()">Create account</button>`;window.signupRole='customer'}
+function pickRole(r){window.signupRole=r;$('custRole').classList.toggle('selected',r==='customer');$('proRole').classList.toggle('selected',r==='professional');$('proFields').classList.toggle('hide',r!=='professional')}
+async function login(){const email=$('email').value,password=$('password').value;const r=await sb.auth.signInWithPassword({email,password});if(r.error)return $('authMsg').innerHTML=`<div class="error">${esc(r.error.message)}</div>`;view='home'}
+async function signup(){const role=window.signupRole||'customer',name=$('name').value.trim(),email=$('email').value.trim(),password=$('password').value,phone=$('phone').value,city=$('city').value,state=$('state').value;const selected=[...document.querySelectorAll('input[name="service"]:checked')].map(x=>x.value);if(!name||!email||password.length<6)return $('authMsg').innerHTML='<div class="error">Enter your name, valid email and a password of at least 6 characters.</div>';const r=await sb.auth.signUp({email,password,options:{data:{role,full_name:name,phone,city,state,services:selected,service_area:$('area')?.value||''}}});if(r.error)return $('authMsg').innerHTML=`<div class="error">${esc(r.error.message)}</div>`;$('authMsg').innerHTML='<div class="success">Account created. Check your email if confirmation is enabled, then log in.</div>'}
+async function signOut(){await sb.auth.signOut();view='home'} function go(v){view=v;render();if(v==='connections')loadConnections()}
+function customerHome(){
+if(view==='explore')return explore();
+if(view==='connections')return connections();
+if(view==='profile')return profilePage();
+$('main').innerHTML=`<section class="hero">
+<div>
+<div class="hero-kicker"><i></i> JIMKI • LOCAL SERVICES</div>
+<h1>Get the right pro for the job.</h1>
+<p>From quick repairs to bigger home projects, JIMKI helps you discover local professionals, send a request and connect directly.</p>
+<div class="search"><input id="heroSearch" placeholder="What do you need help with?"><button class="primary" onclick="searchService()">Find help</button></div>
+</div>
+<div class="hero-card">
+<div class="mini-title">How JIMKI works</div>
+<div class="big">Simple. Direct. Built for real jobs.</div>
+<p>No complicated bidding or payment middleman. Tell us what you need, connect with a professional and agree on the details directly.</p>
+<div class="hero-points">
+<div class="hero-point"><span>✓</span> Find a service in your area</div>
+<div class="hero-point"><span>✓</span> Send your job request</div>
+<div class="hero-point"><span>✓</span> Connect and agree directly</div>
+</div>
+</div></section>
+<section class="section"><div class="head"><div><h2>What do you need?</h2><p class="muted">Popular services on JIMKI</p></div></div>
+<div class="services">${services.slice(0,6).map(s=>`<button class="service" onclick="requestService('${esc(s[1])}')"><div class="ico">${s[0]}</div><strong>${esc(s[1])}</strong><small class="muted">${esc(s[2])}</small></button>`).join('')}</div></section>
+<section class="section"><div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 24px">
+<div><b style="font-family:Manrope,sans-serif;font-size:17px">Your job, your terms.</b><p class="muted" style="margin:5px 0 0;font-size:13px">Requests are free. You and the professional handle scope, price, timing and payment directly.</p></div>
+<div class="tag">No platform payment</div></div></section>`;
+}
+function explore(){ $('main').innerHTML=`<div class="head"><div><h2>Explore services</h2><p class="muted">Choose a service and send a request.</p></div></div><div class="services">${services.map(s=>`<button class="service" onclick="requestService('${esc(s[1])}')"><div class="ico">${s[0]}</div><strong>${esc(s[1])}</strong><small class="muted">${esc(s[2])}</small></button>`).join('')}</div>`}
+function requestService(service){openModal(`<button class="close" onclick="closeModal()">✕</button><h2>${esc(service)}</h2><p class="muted">Tell professionals what you need. No payment is collected by JIMKI.</p><div class="field"><label>Describe the job</label><textarea id="reqDesc" placeholder="Example: My kitchen sink is leaking..."></textarea></div><div class="field"><label>When?</label><select id="reqTiming"><option>ASAP</option><option>Today</option><option>Tomorrow</option><option>Schedule later</option></select></div><div class="field"><label>Service address</label><input id="reqAddress" placeholder="123 Main St, Austin, TX"></div><button class="primary" style="width:100%" onclick="createRequest('${esc(service)}')">Find professionals</button>`)}
+async function createRequest(service){const description=$('reqDesc').value.trim(),address=$('reqAddress').value.trim(),timing=$('reqTiming').value;if(!description||!address)return alert('Please enter the job description and service address.');const r=await sb.from('service_requests').insert({customer_id:user.id,service,description,address,timing,city:profile?.city||'',state:profile?.state||''}).select().single();if(r.error)return alert(r.error.message);closeModal();alert('Request sent. Matching professionals can now see it on JIMKI.');go('connections')}
+async function connections(){ $('main').innerHTML='<div class="head"><h2>Your connections</h2><button class="primary" onclick="go(\'home\')">New request</button></div><div class="card">Loading…</div>';loadConnections()}
+async function loadConnections(){if(!sb||!user)return;const r=await sb.from('connections').select('id,status,created_at,service_requests(service,description,address),profiles:professional_id(full_name,phone)').eq('customer_id',user.id).order('created_at',{ascending:false});const rows=r.data||[];if(view!=='connections')return;$('main').innerHTML=`<div class="head"><h2>Your connections</h2><button class="primary" onclick="go('home')">New request</button></div>${rows.length?rows.map(x=>`<div class="card" style="margin:12px 0"><div class="row"><div><b>${esc(x.service_requests?.service)}</b><div class="muted">${esc(x.profiles?.full_name||'Professional')}</div></div><span class="tag">${esc(x.status)}</span></div><p class="muted">${esc(x.service_requests?.description||'')}</p>${x.profiles?.phone?`<a class="primary" style="display:inline-block;text-decoration:none" href="tel:${esc(x.profiles.phone)}">Call professional</a>`:''}<div class="notice">Payment is settled directly between you and the professional.</div></div>`).join(''):'<div class="empty"><h3>No connections yet</h3><p class="muted">Send your first service request.</p><button class="primary" onclick="go(\'home\')">Find help</button></div>'}`}
+async function searchService(){const q=$('heroSearch').value.trim().toLowerCase();const found=services.find(s=>s[1].toLowerCase().includes(q)||s[2].toLowerCase().includes(q));requestService(found?found[1]:'Handyman')}
+function profilePage(){$('main').innerHTML=`<div class="head"><h2>Your profile</h2></div><div class="card"><div class="provider"><div class="avatar">${esc((profile?.full_name||'U').slice(0,2).toUpperCase())}</div><div><h3 style="margin:0">${esc(profile?.full_name)}</h3><div class="muted">${esc(user.email)}</div><div class="muted">${esc(profile?.city||'')} ${esc(profile?.state||'')}</div></div></div><div class="tags"><span class="tag">${esc(profile?.role)}</span><span class="tag">${profile?.verified?'Verified':'Verification pending'}</span></div></div>`}
+async function proDashboard(){if(view==='profile')return profilePage();if(view==='connections'){view='home'}const r=await sb.from('service_requests').select('*').eq('status','open').order('created_at',{ascending:false});const requests=(r.data||[]).filter(x=>(profile?.services||[]).includes(x.service));$('main').innerHTML=`<div class="head"><div><h2>Professional dashboard</h2><div class="muted">${esc(profile?.full_name)}</div></div><span class="tag">${profile?.verified?'✓ Verified':'Verification pending'}</span></div><div class="grid"><div class="card"><span class="muted">Open requests</span><h2>${requests.length}</h2></div><div class="card"><span class="muted">Rating</span><h2>${profile?.rating||'—'}★</h2></div><div class="card"><span class="muted">Connections</span><h2>—</h2></div></div><section class="section"><div class="head"><h2>Customer requests</h2></div>${requests.length?requests.map(x=>`<div class="card" style="margin:12px 0"><div class="row"><div><b>${esc(x.service)}</b><div class="muted">${esc(x.city||'Local customer')} · ${esc(x.timing)}</div></div><span class="tag">Open</span></div><p>${esc(x.description)}</p><div class="muted">${esc(x.address)}</div><button class="primary" style="margin-top:14px" onclick="acceptRequest('${x.id}')">Accept & connect</button></div>`).join(''):'<div class="empty"><h3>No matching requests yet</h3><p class="muted">Stay available and new customer requests will appear here.</p></div>'}</section>`}
+async function acceptRequest(requestId){const q=await sb.from('service_requests').select('customer_id').eq('id',requestId).single();if(q.error)return alert(q.error.message);const r=await sb.from('connections').insert({request_id:requestId,customer_id:q.data.customer_id,professional_id:user.id,status:'accepted'}).select().single();if(r.error)return alert(r.error.message);await sb.from('service_requests').update({status:'connected'}).eq('id',requestId);alert('Connected. Contact the customer directly to discuss scope, price, timing and payment.');render()}
+function openModal(html){$('sheet').innerHTML=html;$('modal').classList.add('open')}function closeModal(){$('modal').classList.remove('open')}
+init();
+</script></body></html>
